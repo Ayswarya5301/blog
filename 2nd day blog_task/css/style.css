@@ -1,0 +1,53 @@
+  .bg-1 { 
+    background-color: #1abc9c;
+    color: #ffffff;
+  }
+
+  .container-fluid {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .panel-group {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.iconstyle{
+color: #fff;
+    margin: 10%;
+	float:right;
+}
+  .bg-1 { 
+    background-color: #1abc9c;
+    color: #ffffff;
+  }
+
+  .container-fluid {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .panel-group {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.iconstyle{
+color: #fff;
+    margin: 10%;
+	float:right;
+}
+.form_outline{
+margin: 10%;
+    padding: 10%;
+    border-radius: 15px;
+    box-shadow: 3px 1px 14px #999;
+}
+.panel:hover {
+	box-shadow: 2px 5px 6px rgba(0,0,0,.5);
+}
+.mouseover {
+	background-color: #4CAF50;
+	color: white;
+	display: inline-block;
+	padding: 2px 25px;
+	text-align: center;
+	width: 93%;
+}

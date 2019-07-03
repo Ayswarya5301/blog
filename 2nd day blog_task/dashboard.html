@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Blog Assignment</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+
+  </style>
+</head>
+
+<body onload="List()">
+	<div class="container-fluid bg-1 text-center">
+	<div class="col-md-11 col-xs-10"><h3>Blog Assignment</h3></div>
+	<div class="col-md-1 col-xs-2"> <a href="AddBlog.html" title="create blog"><i class="fa fa-plus-square fa-2x iconstyle" ></i></a></div>
+	</div>
+	<div id="contents"></div>
+</body>
+
+<script>
+    var selected_index = -1;
+    var tbClients = localStorage.getItem("tbClients");//Retrieve the stored data
+	tbClients = JSON.parse(tbClients); //Converts string to object
+	if(tbClients == null) //If there is no data, initialize an empty array
+		tbClients = [];
+
+function List(){
+	for(var i in tbClients){
+		var cli = JSON.parse(tbClients[i]);
+$("#contents").append("<div class='container'>" +"<div class='panel-group'>" +"<div class='panel panel-primary' style='margin-top: 25px;'>" +
+      "<div class='panel-heading'>"+cli.Title+" <i class='fa fa-pencil-square-o icon' style='float: right;' onclick='btnEdit("+i+")'  aria-hidden='true' alt='Edit"+i+"'>"+
+      "</i></div><div class='contents' style='padding: 15px;'>"+cli.Content+"</div></div></div></div>"); 
+	}
+} 
+function btnEdit(i){
+    var cli = JSON.parse(tbClients[i]);
+	document.location.href = "AddBlog.html?id="+i;
+}
+
+</script>
+</html>

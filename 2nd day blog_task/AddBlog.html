@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Blog Assignment</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+.mouseover {
+    background-color: #1abc9c;
+    color: white;
+    display: inline-block;
+    padding: 8px 25px;
+    text-align: center;
+    width: 49%;
+    border: 1px solid #1abc9c;
+}
+.mouseover:hover {
+    background-color: #008CBA;
+	
+    border: 1px solid 008CBA;
+}
+.mouseover_cancel{
+    background-color: #dc1511cf;
+    color: white;
+    display: inline-block;
+    padding: 8px 25px;
+    text-align: center;
+    width: 49%;
+    border: 1px solid #dc1511cf;
+}
+.mouseover_cancel:hover {
+    background-color: #008CBA;
+    border: 1px solid #008CBA;
+}
+  </style>
+</head>
+<body>
+
+<div class="container-fluid bg-1 text-center">
+  <div class="col-md-12">
+	<h3>Create Blog</h3>
+  </div>
+</div>
+<div class="container">
+	<div class="col-md-offset-3 col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+		<form class="form_outline">
+			<div class="form-group">
+				<label>Title:</label>
+				<input type="text" class="form-control" id="title" placeholder="Title" >
+				<input type="hidden" id="lid"><!--to select index value-->
+			</div>
+			<div class="form-group">
+				<label>Content:</label>
+				<textarea class="form-control" rows="5" id="content" placeholder="Describtion" ></textarea>
+			</div>
+			<button  class="mouseover_cancel"><a href="dashboard.html" style="color:#fff;">Back&nbsp;<i class="fa fa-arrow-left"></i></a></button>
+			<button type="button" class="mouseover" onclick="Add()">Save&nbsp;<i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+		</form>
+	</div>
+</div>
+
+<script>
+var url_string=window. location. href;
+    var url = new URL(url_string);
+    var c = url.searchParams.get("id");
+console.log(c);
+    var tbClientss = localStorage.getItem("tbClients");
+    var tbClients1 = JSON.parse(tbClientss);
+	//console.log(tbClients);
+          if(c != null){
+
+	          var cli = JSON.parse(tbClients1[c]);
+	          document.getElementById("title").value=cli.Title;
+            document.getElementById("content").value=cli.Content;
+            document.getElementById("lid").value=c;
+	
+          }   
+	
+	//tbClients = JSON.parse(tbClients); 
+	if(tbClients1 == null) 
+		tbClients1 = [];
+
+    function Add(){
+		//alert("sadf");
+  var lid=document.getElementById("lid").value;
+  if(lid ==""){
+	var client = JSON.stringify({
+		Title    : document.getElementById("title").value,
+		Content  : document.getElementById("content").value
+	});
+  console.log(lid);
+	tbClients1.push(client);
+	console.log(tbClients1);
+	localStorage.setItem("tbClients", JSON.stringify(tbClients1));
+
+	//return true;
+  window.location.replace("dashboard.html");
+  }else{
+    var lid=document.getElementById("lid").value;
+    tbClients1[lid] = JSON.stringify({
+      Title    : document.getElementById("title").value,
+		Content  : document.getElementById("content").value
+		});//Alter the selected item on the table
+	localStorage.setItem("tbClients", JSON.stringify(tbClients1));
+	
+//	return true;
+  document.location.href = "dashboard.html";
+  }
+} 
+</script>
+</body>
+</html>
